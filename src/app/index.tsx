@@ -1,13 +1,18 @@
-import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { Button, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
+
+  const [count, setCount] = useState<number>(0);
+
   return (
     <View style={styles.container}>
+      <Text style={{fontSize: 30, fontWeight: "600"}}>
+          Count: {count}
+        </Text>
       <View>
-        <Text style={styles.header}>hunglunn</Text>
+        <Button color={"red"} title="Increase" onPress={() => setCount(count + 1)}/>
       </View>
-      <Text style={styles.title1}>src/app/index.tsx</Text>
-      <Text>OK nhaaaaaaa</Text>
     </View>
   );
 }
@@ -17,13 +22,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-
-  title1: {
-    color: "red", fontSize: 50,
-    borderWidth: 1,
-    },
-    header: {
-      fontSize: 30,
-      fontWeight: 600
-    }
 });
