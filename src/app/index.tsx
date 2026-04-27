@@ -1,51 +1,44 @@
 import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
 
-  const [count, setCount] = useState<number>(0);
-  const [name, setName] = useState<String>("");
-  const [age, setAge] = useState<number>(0);
+  const [students, setStudents] = useState([
+    { id: 1, name: "Eric", age: 28 },
+    { id: 2, name: "Rock", age: 29 },
+    { id: 3, name: "Tracsh", age: 30 },
+    { id: 4, name: "Rtup", age: 22 },
+    { id: 5, name: "GKW2", age: 11 },
+    { id: 6, name: "2131", age: 11 },
+    { id: 7, name: "GKwdfwdW2", age: 11 },
+  ])
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={{ fontSize: 30, fontWeight: "600" }}>Name: {name}</Text>
-        <TextInput
-          multiline
-          onChangeText={(value) => setName(value)}
-          style={{
-            borderColor: "green",
-            borderWidth: 1,
-            width: 200,
-            padding: 15
-          }} />
-      </View>
-      <View>
-        <Text style={{ fontSize: 30, fontWeight: "600" }}>Age: {age}</Text>
-        <TextInput
-          onChangeText={(value) => setAge(+value)}
-          style={{
-            borderColor: "green",
-            borderWidth: 1,
-            width: 200,
-            padding: 15
-          }} />
-      </View>
-
-      <View>
-      <Text style={{ fontSize: 30, fontWeight: "600" }}>
-          Count: {count}
-        </Text>
-        <Button color={"red"} title="Increase" onPress={() => setCount(count + 1)} />
-      </View>
+      <Text style={{ fontSize: 60 }}>Hello world !</Text>
+      <ScrollView>
+        {students.map(item => {
+          return (
+            <View key={item.id} style={{
+              padding: 30,
+              backgroundColor: "pink",
+              marginBottom: 30,
+            }}>
+              <Text>{item.name}</Text>
+              </View>
+              );
+        })}
+            </ScrollView>
     </View>
-  );
+      );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+      const styles = StyleSheet.create({
+        container: {
+        paddingTop: 50,
+      paddingHorizontal: 20,
+      flex: 1,
+      backgroundColor: '#fff',
+    // alignItems: "center",
+    // justifyContent: "center",
   },
 });
