@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
 
@@ -16,28 +16,33 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: 60 }}>Hello world !</Text>
-      <ScrollView>
-        {students.map(item => {
-          return (
-            <View key={item.id} style={{
-              padding: 30,
-              backgroundColor: "pink",
-              marginBottom: 30,
-            }}>
-              <Text>{item.name}</Text>
-              </View>
-              );
-        })}
-            </ScrollView>
+      <FlatList 
+      data={students}
+      keyExtractor={item => item.id + ""}
+      renderItem={({item}) =>  {
+        return (
+          <View style={{
+            padding: 30,
+            backgroundColor: "pink",
+            marginBottom: 30
+          }}>
+            <Text>{item.name}</Text>
+          </View>
+        )
+      }}
+      >
+        
+
+      </FlatList>
     </View>
-      );
+  );
 }
-      const styles = StyleSheet.create({
-        container: {
-        paddingTop: 50,
-      paddingHorizontal: 20,
-      flex: 1,
-      backgroundColor: '#fff',
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 50,
+    paddingHorizontal: 20,
+    flex: 1,
+    backgroundColor: '#fff',
     // alignItems: "center",
     // justifyContent: "center",
   },
